@@ -2,9 +2,9 @@ fx_version "cerulean"
 game "gta5"
 lua54 "yes"
 
-author "JG Scripts"
-description "Tracks vehicle mileage with UI"
-version "v1.2"
+author "JG Scripts ft. Xergxes7"
+description "Tracks vehicle mileage and gears with UI"
+version "v1.2.1"
 
 shared_scripts {
   "@ox_lib/init.lua",
