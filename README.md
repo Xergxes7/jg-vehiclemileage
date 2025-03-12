@@ -1,10 +1,10 @@
-# JG Scripts Vehicle Mileage (QB/QBox/ESX)
+# JG Scripts Vehicle Mileage with Gears (QB/QBox/ESX)
 
 <img src="https://i.ibb.co/WNJbSSQm/geardisplay.png" alt="vehicle-mileage-gears" style="width:200px;"/>
 
 A simple script for QBCore, QBox & ESX to show your vehicle's mileage in-game. When driving a vehicle that is owned (stored in the database), you will see an odometer in the bottom right of your screen. You can configure it to use miles or kilometers.
 
-Includes additional customisation by Xergxes7
+Includes additional customisation by Xergxes7 to display Gears
 
 ## Installation
 
