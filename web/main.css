@@ -3,6 +3,8 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+  overflow: hidden; /* Prevents unwanted scrollbars */
 }
 
 body {
@@ -10,12 +12,20 @@ body {
   background: none;
 }
 
-.odometer {
+/* HUD container to position everything together */
+.hud-container {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  padding-bottom: 5px;
+}
+
+/* Odometer and Gear Display now share the same styling */
+.odometer, .gear-display {
   display: none;
   gap: 7.5px;
-  margin: 2rem;
-  align-items: center;
-  position: absolute;
   background: #212529;
   border: 1px solid #42484e;
   padding: 5px 8px;
@@ -23,12 +33,14 @@ body {
   color: white;
   transition: 0.5s ease-in-out;
   user-select: none;
+  position: relative;
 }
 
-.odometer-value {
+
+.odometer-value, .gear-value {
   font-size: 20px;
 }
 
-.odometer-unit {
+.odometer-unit, .gear-label {
   color: #999;
 }

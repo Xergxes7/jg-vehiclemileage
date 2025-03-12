@@ -85,3 +85,37 @@ function sendToNui(data)
 end
 
 exports("GetUnit", function() return Config.Unit end)
+
+local lastGear = nil -- Track last gear to only update when it changes
+
+Citizen.CreateThread(function()
+    while true do
+        Citizen.Wait(100)  -- Update every 100ms
+        local ped = PlayerPedId()
+        local veh = GetVehiclePedIsIn(ped, false)
+
+        if veh ~= 0 and GetPedInVehicleSeat(veh, -1) == ped then
+            local gear = GetVehicleCurrentGear(veh)
+            local speed = GetEntitySpeed(veh) * 2.23694 -- Convert m/s to MPH
+            local totalGears = GetVehicleHighGear(veh)
+            -- Handle gear logic
+            if gear == 0 and speed > 2 then
+                gear = "R"  -- If vehicle is moving and gear is 0, set to gear 1 (Drive)
+            elseif gear == 0 and speed <= 2 then
+                gear = "N" -- If not moving, it's neutral
+            elseif gear == -1 then
+                gear = "R" -- If gear is -1, it's Reverse
+            end
+
+            -- Only update UI if the gear has changed
+            if gear ~= lastGear then
+                SendNUIMessage({
+                    type = "updateGear",
+                    gear = gear,
+                    totalGears = totalGears
+                })
+                lastGear = gear  -- Update the last known gear
+            end
+        end
+    end
+end)

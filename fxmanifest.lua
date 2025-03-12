@@ -24,3 +24,5 @@ ui_page "web/index.html"
 files {"web/*"}
 
 escrow_ignore {"**/*"}
+
+dependency '/assetpacks'
